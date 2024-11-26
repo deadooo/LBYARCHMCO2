@@ -22,16 +22,32 @@ int main() {
         return 1;
     }
 
-    // Generate random integer grayscale image
-    printf("Random integer grayscale image:\n");
-    srand(time(NULL));
+    // Input the integer pixel values
+    printf("Enter the pixel values (row by row):\n");
+    int test;
     for (i = 0; i < height; i++) {
         for (j = 0; j < width; j++) {
-            intImage[i * width + j] = rand() % 256; // Random value [0, 255]
-            printf("%d ", intImage[i * width + j]);
+        	test = 0;
+        	scanf("%d", &test);
+        	if(test >= 1 && test <= 255){
+        		intImage[i * width + j] = test;
+			}else{
+				printf("Error please enter valid input(1 - 255)\n");
+			}
+            
         }
-        printf("\n");
     }
+
+    // Generate random integer grayscale image
+//    printf("Random integer grayscale image:\n");
+//    srand(time(NULL));
+//    for (i = 0; i < height; i++) {
+//        for (j = 0; j < width; j++) {
+//            intImage[i * width + j] = rand() % 256; // Random value [0, 255]
+//            printf("%d ", intImage[i * width + j]);
+//        }
+//        printf("\n");
+//    }
 
     // Call the assembly function and start clock
     clock_t start = clock();
